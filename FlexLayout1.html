@@ -2,66 +2,97 @@
   <div class="flexbox-item-1">	
       <span>Left Menu</span>
   </div>
-    <div class="flexbox-item-2">
-    	<span>Header</span>
+  <div class="flexbox-item-2 menu">
+    	<div class="menu-item">menu items1</div>
+        <div class="menu-item">menu items2</div>
+        <div class="menu-item">menu items3</div>
   </div>
   <div class="flexbox-item-3">	
   </div>
 </div>
 
-
 <style>
-	.flexbox-container
-    {
-    	display:flex;
-        height:700px;
-        /*flex-direction:column;*/
+	.flexbox-container {
+    	display: flex;
+        height: 700px;
         background-color: yellow;
-        /*justify-content: center;
-        justify-content: flex-start;*/
-        
-        justify-content: space-around;
-        
-        /*align-items: center;*/
-        /*align-content: center;
-        align-content: flex-start;*/
-        /*align-content: space-between;*/
-        
-        flex-wrap:wrap
+        align-items: center;
+        flex-wrap: wrap;
     }
     
-    .flexbox-item-1
-    {
-       border:solid 1px black;
-       width:100px;height:50vh;
+    .flexbox-item-1 {
+       border: solid 1px black;
+       width: 100px;
+       height: 50vh;
        background-color: #c0c0c0;
-       margin:20px;
-       flex-shrink:0;
+       margin: 0px;
+       flex-shrink: 0;
        align-self: start;
-       /*order:2;*/
     }
     
-    .flexbox-item-2
-    {
-       border:solid 1px black;
-       width:150px;height:150px;
+    .flexbox-item-2 {
+       border: solid 1px black;
+       width: 300px;
+       height: 150px;
        background-color: red;
-       margin:20px;
-       flex-grow:1;
-       flex-basis:0;       /*override the width and gives a basis point to increase the flex-grow*/
+       flex-grow: 2;
+       flex-shrink: 2;
        align-self: start;
-       /*order:3;  Not recommended - use HTML to reorder the element */
     }
     
-    .flexbox-item-3
-    {
-       border:solid 1px black;
-       width:150px;height:250px;
+    .flexbox-item-2.menu {
+    	min-width: 300px;
+    	display: flex;
+        flex-wrap: wrap;
+        flex-shrink: 1;
+    }
+    
+    .flexbox-item-3 {
+       border: solid 1px black;
+       width: 50px;
+       height: 150px;
        background-color: black;
-       margin:20px;
-       flex-grow:1;
-       flex-basis:0;
-       align-self: center;
-       /*order:1;*/
+       flex-grow: 1;
+       flex-shrink: 1;
+       flex-basis: 0;
+       align-self: start;
+       margin-left: auto;
+    }
+    
+    .menu-item {
+    	flex: 1 1 100px;
+        margin: 5px;
+        background-color: lightgray;
+        text-align: center;
+    }
+    
+    @media (max-width: 768px) {
+        .flexbox-container {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-template-rows: auto auto;
+            grid-template-areas:
+                "item1 item2"
+                "item1 item3";
+            height: auto;
+        }
+        
+        .flexbox-item-1 {
+            grid-area: item1;
+        }
+        
+        .flexbox-item-2 {
+            grid-area: item2;
+            width: 100%; /* Make it full width */
+        }
+        
+        .flexbox-item-3 {
+            grid-area: item3;
+            width: 100%; /* Make it full width */
+            margin-left: 0; /* Remove the left margin */
+        }
     }
 </style>
+
+
+
